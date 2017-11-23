@@ -34,7 +34,7 @@ public class DownLoadFile {
 
     private int fileLength;//文件总大小
     //使用volatile防止多线程不安全
-    private volatile int currLength;//当前总共下载的大小
+    public volatile int currLength;//当前总共下载的大小
     private volatile int runningThreadCount;//正在运行的线程数
     private Thread[] mThreads;
     private String stateDownload = DOWNLOAD_INIT;//当前线程状态

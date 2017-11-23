@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete() {
                 Toast.makeText(MainActivity.this, "下载完成", Toast.LENGTH_SHORT).show();
+                b = true;
             }
 
             @Override
@@ -121,11 +122,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 downLoadFile.onPause();
                 b = false;
 
-                int progress = mSb.getProgress();
-                Log.e("TAG----",String.valueOf(progress));
+                //获取当前下载的大小
+                int currLength = downLoadFile.currLength;
+                Log.e("TAG----",String.valueOf(currLength));
 
                 //添加进数据库
-                insert("当前进度为"+String.valueOf(progress)+"%");
+                insert(String.valueOf(currLength));
 
                 break;
             /*case R.id.bt_restart:
